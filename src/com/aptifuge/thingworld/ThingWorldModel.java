@@ -34,20 +34,10 @@
 
 package com.aptifuge.thingworld;
 
-import java.awt.Color;
-import java.awt.Dimension;
+//import org.json.*;
 import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
-import java.util.AbstractList;
 import java.util.ArrayList;
-import java.util.Random;
-
-import com.aptifuge.thingworld.Trig;
-
-import sun.java2d.loops.DrawLine;
-
+import org.json.*;
 /*
  * thingworld -- a place where all these things live. 
  * 
@@ -107,7 +97,7 @@ public class ThingWorldModel implements Constance{
 
 		//collidable objects that are moving and interacting:
 		//add squares with random position and velocity
-		
+/*		
 		for (int c2=0;c2<2;c2++){
 			Thing t = new Thing(this,Thing.SQUARE);
 			t.putatpos(rand.nextDouble()*WORLDSIZEX-50, rand.nextDouble()*WORLDSIZEY-50);
@@ -137,6 +127,7 @@ public class ThingWorldModel implements Constance{
 			thingz.add(t);				
 			thingz.get(c2).shapenum=c2;
 		}
+		
 		//add triangles
 		for (int c2=0;c2<2;c2++){
 			Thing t = new Thing(this,Thing.TRIANGLE);
@@ -187,6 +178,22 @@ public class ThingWorldModel implements Constance{
 		triangle.putatpos(330, 40);
 		triangle.setrot(pi);
 		thingz.add(triangle);
+
+		//add triangles
+
+		
+		for (int c2=0;c2<2;c2++){
+			Thing t = new Thing(this,Thing.TRIANGLE);
+			t.putatpos(rand.nextDouble()*WORLDSIZEX-50, rand.nextDouble()*WORLDSIZEY-50);
+			t.putatpos(rand.nextInt(WORLDSIZEX) , rand.nextInt(WORLDSIZEY) );
+			t.yt=rand.nextDouble();
+			t.xt=rand.nextDouble();
+			thingz.add(t);				
+			thingz.get(c2).shapenum=c2;
+			
+		}
+*/		thingz= new ThingzReader().getFromJSON(this,null);
+		
 	}
 	
 	public void update(){

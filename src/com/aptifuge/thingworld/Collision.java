@@ -190,7 +190,7 @@ public class Collision implements Constance{
 		//First process collision queue -- these are objects already collided that need to 
 		//have their travel angle and velocity adjusted 
 		while (collisionqueue.size() > 0) {
-			CollidedThingSet ctp = collisionqueue.remove(collisionqueue. size()-1);
+			CollidedThingSet ctp = collisionqueue.remove(collisionqueue.size()-1);
 			docollision(ctp.t1,ctp.t2,ctp.d1,ctp.d2,ctp.dist);
 			
 		}

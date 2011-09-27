@@ -33,6 +33,7 @@ package com.aptifuge.thingworld;
 public class Main {
 	public static void main(String[] args)
 	{
+		
 		System.out.println("ThingWorld 0.3 !");
 		ThingWorldController twController = new ThingWorldController();			
 		System.out.println("ThingWorld 0.3 ! -- terminated normally Main.main ");

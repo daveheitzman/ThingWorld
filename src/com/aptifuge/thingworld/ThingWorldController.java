@@ -64,7 +64,7 @@ public class ThingWorldController extends JFrame implements Constance, Runnable,
 
 	public ThingWorldController(){
 		resetnow = true;
-
+		System.out.println();
 		while (true)
 		{		
 			if (resetnow) {

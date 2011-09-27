@@ -46,8 +46,15 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.PathIterator;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
+
 import ec.util.*;
-public class Thing implements Constance {
+public class Thing implements Constance, Serializable {
+	/**
+	 * 
+	 */
+	
+	private static final long serialVersionUID = -4841438559063546930L;
 	//this is the interface for all "things" in the world. 
 	/*
 	 * 1. 	have a "per tick" modifier for x and y (position), and r, rotation (in radians: positive = counterclockwise)
@@ -320,6 +327,7 @@ public class Thing implements Constance {
 		}
 		lastupdate=System.nanoTime();
 		hiatus=0;
+		centerpoint.setLocation(ox,oy);
 	};
 	
 
@@ -510,7 +518,7 @@ public class Thing implements Constance {
 	
 	public Point getCenter()
 	{
-		centerpoint.setLocation(ox,oy);
+		//centerpoint.setLocation(ox,oy);
 		return centerpoint;	
 	}
 
@@ -528,11 +536,10 @@ public class Thing implements Constance {
 	}
 	
 	public void notifycollision(Thing t2, double newangle, double newvelocity) {
-		// TODO Auto-generated method stub
-		//note that colspoke0 and colspoke1 should be set correctly as the collided spoke
+	//note that colspoke0 and colspoke1 should be set correctly as the collided spoke
 		this.setdirection(newangle);
 		this.setvelocity(newvelocity);
-	//	this.hiatus=4;
+		//this.hiatus=4;
 	}
 	public BasicStroke getMystroke() {
 		return mystroke;

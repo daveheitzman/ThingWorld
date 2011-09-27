@@ -261,6 +261,7 @@ public class ThingWorldView extends JPanel implements Constance, ActionListener,
 		g2d.drawLine(p.x,p.y,p2.x,p2.y );
 		g2d.drawLine(p.x,p.y,p3.x,p3.y );
 		}
+
 		//the boundary box, a rectangle showing the shape's extent
 		if(surroundbox){
 			int x11=th.getlb();int y11=th.gettb();int x44=th.getrb();int y44= th.getbb();
@@ -275,10 +276,17 @@ public class ThingWorldView extends JPanel implements Constance, ActionListener,
 			g2d.drawPolygon(pg);
 			
 		}
-		
+		Boolean surroundcircle = true;
+		if(surroundcircle){
+			double rad=th.radmax;
+			Point ce = new Point( th.getCenter());
+			Point po= new Point((int)(ce.x-rad),(int)(ce.y-rad ) ) ;//new Point( (int)th.getlb(), (int) th.gettb() );
+			po = viewsquare.txworld2screen(po);
+			g2d.drawArc( (int)po.x , (int)po.y ,(int) rad*2+2,(int) rad*2+2 , 0 , 360 );
+			
+		}
 		//this shows the line segment connecting the two points that are the ends of the 
 		//two spokes closest to the angle of the approaching object
-//		System.out.println("showcollisionspan "+showcollisionspan);
 
 		if (showcollisionspan){
 			g2d.setColor(new Color(220,111,50));
@@ -294,8 +302,8 @@ public class ThingWorldView extends JPanel implements Constance, ActionListener,
 			Point p1 = viewsquare.txworld2screen( new Point((int)thm.ox,(int)thm.oy) );
 			
 			String s = "The Man-- ox:"+ String.valueOf(p1.x)+",oy:"+String.valueOf(p1.y)+",xt:"+String.valueOf(th.xt)+",yt:"+ 
-					String.valueOf(thm.yt)+",xa:"+String.valueOf(thm.xa)+",ya:"+String.valueOf(th.ya)+",r:"+ 
-					String.valueOf(thm.r)+",rt:"+ String.valueOf(thm.rt);
+			String.valueOf(thm.yt)+",xa:"+String.valueOf(thm.xa)+",ya:"+String.valueOf(th.ya)+",r:"+ 
+			String.valueOf(thm.r)+",rt:"+ String.valueOf(thm.rt);
 			g2d.setBackground(new Color(220,220,230));
 			g2d.drawString(s, 2, 10);
 		}
